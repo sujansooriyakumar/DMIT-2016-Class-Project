@@ -5,7 +5,9 @@ public class PlayerStats : MonoBehaviour
 {
     public int maxHP;
     private int currentHP;
+    public int coins;
     public UnityEvent OnDeath;
+    public UnityEvent OnCoinCollect;
 
     public void TakeDamage(int damage_)
     {
@@ -18,4 +20,9 @@ public class PlayerStats : MonoBehaviour
     }
 
     public float GetHealthPercentage() { return currentHP / maxHP; }
+    public void CollectCoin()
+    {
+        coins++;
+        OnCoinCollect?.Invoke();
+    }
 }
